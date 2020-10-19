@@ -28,13 +28,34 @@ char * mystrncat(char *s1, char *s2, int size) {
 
 char * mystrchr(char *s, char c) {
 	int i = 0;
-	while ((*(s + i) != c) && (i < mystrlen(s) - 1)) {
+	while (i < mystrlen(s) + 1) {
+		if (*(s + i) == c) {
+			return (s + i);
+		}
 		i++;
 	}
-	return (s + i);
+	return NULL;
 }
 
 int mystrcmp (char *s1, char *s2) {
-	return 0;
+	int a = mystrlen(s1);
+	int b = mystrlen(s2);
+	if (a > b) {
+		return 1;
+	}
+	else {
+		if (a < b) {
+			return -1;
+		}
+		else {
+			int i;
+			for (i = 0; i < a; i++) {
+				if (*(s1+i) < *(s2+i)) {
+					return -1;
+				}
+			}
+			return 0;
+		}
+	}
 }
 
